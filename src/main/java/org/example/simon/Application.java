@@ -18,8 +18,6 @@ public class Application extends javafx.application.Application {
         stage.setTitle("Simon");
         stage.setScene(scene);
         stage.show();
-
-
     }
 
     public static void main(String[] args) {
@@ -27,16 +25,9 @@ public class Application extends javafx.application.Application {
     }
     public static void startGame(){
 
-        Level level = new Level();
-        ColorOrder colorOrder = new ColorOrder();
-        Score score = new Score();
-        Game game = new Game();
-        colorOrder.resetArrays();
-        level.resetLevel(controller);
-        score.changeScore(controller);
-        //controller.hideStartButton();
-        game.game(colorOrder, controller, level, score);
-
-
+        Game.setController(controller);
+        Game.resetLevel();
+        controller.hideStartButton();
+        Game.gameNewLevel();
     }
 }

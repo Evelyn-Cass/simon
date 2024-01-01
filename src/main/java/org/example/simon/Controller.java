@@ -7,20 +7,29 @@ import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import java.io.File;
+
 
 public class Controller {
 
-
-    @FXML
-    private Label welcomeText;
     @FXML
     private Label lblLevel;
     @FXML
-    private Label lblHighestScore;
+    private Label lblHighestLevel;
     @FXML
-    private Label lblScore;
+    private Label lblAlertNextLevel;
+    @FXML
+    private Label lblAlertGameOver;
+    @FXML
+    private Label lblAlertYourTurn;
+    @FXML
+    private Label lblAlertYouWon;
+    @FXML
+    private Rectangle recAlert;
     @FXML
     private Arc arcRed;
     @FXML
@@ -41,20 +50,28 @@ public class Controller {
 
     @FXML
     protected void onMouseClickedGreen() {
-        welcomeText.setText("Green");
+        //1-Red, 2-Blue, 3-Yellow, 4-Green
+        Game.clickedColor(4);
+        changeColorArcGreen();
     }
     @FXML
-    protected void onMouseClickedRed() {
-        welcomeText.setText("Red");
+    protected void onMouseClickedRed(){
+        //1-Red, 2-Blue, 3-Yellow, 4-Green
+        Game.clickedColor(1);
+        changeColorArcRed();
     }
 
     @FXML
     protected void onMouseClickedBlue() {
-        welcomeText.setText("Blue");
+        //1-Red, 2-Blue, 3-Yellow, 4-Green
+        Game.clickedColor(2);
+        changeColorArcBlue();
     }
     @FXML
     protected void onMouseClickedYellow() {
-        welcomeText.setText("Yellow");
+        //1-Red, 2-Blue, 3-Yellow, 4-Green
+        Game.clickedColor(3);
+        changeColorArcYellow();
     }
 
     @FXML
@@ -100,54 +117,81 @@ public class Controller {
         arcGreen.setEffect(null);
     }
 
-    public void  changeColorArcRed(){
-        PauseTransition pause = new PauseTransition(Duration.millis(500));
+    protected void  changeColorArcRed(){
+        PauseTransition pause = new PauseTransition(Duration.millis(1000));
         pause.setOnFinished(e -> arcRed.setFill(Color.RED));
         pause.play();
         arcRed.setFill(Color.web("#EE6352"));
 
     }
 
-    public void changeColorArcBlue(){
-        PauseTransition pause = new PauseTransition(Duration.millis(500));
+    protected void changeColorArcBlue(){
+        PauseTransition pause = new PauseTransition(Duration.millis(1000));
         pause.setOnFinished(e -> arcBlue.setFill(Color.BLUE));
         pause.play();
         arcBlue.setFill(Color.web("#3FA7D6"));
 
     }
 
-    public void changeColorArcGreen(){
-        PauseTransition pause = new PauseTransition(Duration.millis(500));
+    protected void changeColorArcGreen(){
+        PauseTransition pause = new PauseTransition(Duration.millis(1000));
         pause.setOnFinished(e -> arcGreen.setFill(Color.GREEN));
         pause.play();
         arcGreen.setFill(Color.web("#59CD90"));
 
     }
 
-    public void changeColorArcYellow(){
-        PauseTransition pause = new PauseTransition(Duration.millis(500));
+    protected void changeColorArcYellow(){
+        PauseTransition pause = new PauseTransition(Duration.millis(1000));
         pause.setOnFinished(e -> arcYellow.setFill(Color.YELLOW));
         pause.play();
         arcYellow.setFill(Color.web("#FAC05E"));
     }
-    public void changeHighestScore(int i){
-        lblHighestScore.setText( String.format("%03d", i));
+    protected void changeHighestLevel(int i){
+        lblHighestLevel.setText( String.format("%03d", i));
     }
 
-    public void changeScore(int i ){
-        lblScore.setText( String.format("%03d",i));
+    protected void changeLevel( int i){
+       lblLevel.setText(String.format("%03d", i));
     }
-
-    public void changeLevel(int i){
-        lblLevel.setText(String.format("%03d", i));
-    }
-    public void hideStartButton(){
+    protected void hideStartButton(){
         btnStart.setVisible(false);
     }
+    protected void showStartButton(){
+        btnStart.setVisible(true);
+    }
 
-    public void playSound(String path){
-//               Media sound = new Media(new File(musicFile).toURI().toString());
-//        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-//        mediaPlayer.play();
+    protected void playSound(String path) {
+        Media sound = new Media(new File(path).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }
+
+    protected void showAlertYourTurn(){
+
+        lblAlertYourTurn.setVisible(true);
+        recAlert.setVisible(true);
+    }
+    protected void showAlertNextLevel(){
+
+        lblAlertNextLevel.setVisible(true);
+        recAlert.setVisible(true);
+    }
+    protected void showAlertGameOver(){
+
+        lblAlertGameOver.setVisible(true);
+        recAlert.setVisible(true);
+    }
+    protected void showAlertYouWon(){
+
+        lblAlertYouWon.setVisible(true);
+        recAlert.setVisible(true);
+    }
+    protected void hideAlert(){
+        lblAlertYourTurn.setVisible(false);
+        lblAlertGameOver.setVisible(false);
+        lblAlertNextLevel.setVisible(false);
+        lblAlertYouWon.setVisible(false);
+        recAlert.setVisible(false);
     }
 }

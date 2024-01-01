@@ -4,18 +4,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Arc?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="368.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.simon.Controller">
    <children>
-      <Label fx:id="welcomeText" layoutX="14.0" layoutY="14.0" text="Simon">
+      <Label layoutX="14.0" layoutY="14.0" text="Simon">
          <font>
             <Font name="System Bold" size="30.0" />
-         </font>
-      </Label>
-      <Label layoutX="14.0" layoutY="57.0" text="SCORE:">
-         <font>
-            <Font size="20.0" />
          </font>
       </Label>
       <Label layoutX="14.0" layoutY="86.0" text="HIGHEST:">
@@ -32,24 +28,40 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Button>
-      <Label fx:id="lblScore" layoutX="81.0" layoutY="57.0" text="000">
+      <Label fx:id="lblHighestLevel" layoutX="98.0" layoutY="86.0" text="000">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lblHighestScore" layoutX="98.0" layoutY="86.0" text="000">
+      <Label layoutX="14.0" layoutY="58.0" text="LEVEL:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="214.0" layoutY="14.0" text="LEVEL:">
+      <Label fx:id="lblLevel" layoutX="71.0" layoutY="58.0" text="000">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lblLevel" layoutX="273.0" layoutY="14.0" text="000">
+      <Rectangle fx:id="recAlert" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="45.0" layoutX="72.0" layoutY="211.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="225.0" />
+      <Label fx:id="lblAlertYourTurn" alignment="CENTER" contentDisplay="CENTER" layoutX="71.0" layoutY="211.0" prefHeight="45.0" prefWidth="225.0" text="YOUR TURN!" textAlignment="CENTER" textOverrun="CLIP" visible="false">
          <font>
-            <Font size="20.0" />
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblAlertNextLevel" alignment="CENTER" contentDisplay="CENTER" layoutX="75.0" layoutY="211.0" prefHeight="45.0" prefWidth="225.0" text="NEXT LEVEL!" textAlignment="CENTER" textOverrun="CLIP" visible="false">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblAlertGameOver" alignment="CENTER" contentDisplay="CENTER" layoutX="71.0" layoutY="211.0" prefHeight="45.0" prefWidth="225.0" text="GAME OVER!" textAlignment="CENTER" textOverrun="CLIP" visible="false">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblAlertYouWon" alignment="CENTER" contentDisplay="CENTER" layoutX="75.0" layoutY="211.0" prefHeight="45.0" prefWidth="225.0" text="YOU WON!!" textAlignment="CENTER" textOverrun="CLIP" visible="false">
+         <font>
+            <Font name="System Bold" size="30.0" />
          </font>
       </Label>
    </children>
